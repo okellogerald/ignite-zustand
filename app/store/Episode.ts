@@ -1,5 +1,4 @@
 import { formatDate } from "../utils/formatDate"
-import { translate } from "../i18n"
 
 interface Enclosure {
   link: string
@@ -39,9 +38,6 @@ export const getDatePublished = (episode: Episode) => {
     const formatted = formatDate(episode.pubDate)
     return {
       textLabel: formatted,
-      accessibilityLabel: translate("demoPodcastListScreen.accessibility.publishLabel", {
-        date: formatted,
-      }),
     }
   } catch (error) {
     return { textLabel: "", accessibilityLabel: "" }
@@ -59,10 +55,5 @@ export const getDuration = (episode: Episode) => {
   const sDisplay = s > 0 ? s : ""
   return {
     textLabel: hDisplay + mDisplay + sDisplay,
-    accessibilityLabel: translate("demoPodcastListScreen.accessibility.durationLabel", {
-      hours: h,
-      minutes: m,
-      seconds: s,
-    }),
   }
 }

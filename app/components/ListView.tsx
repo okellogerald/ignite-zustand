@@ -1,6 +1,5 @@
 import React, { forwardRef, PropsWithoutRef } from "react"
 import { FlatList } from "react-native"
-import { isRTL } from "app/i18n"
 import { FlashList, FlashListProps } from "@shopify/flash-list"
 
 export type ListViewRef<T> = FlashList<T> | FlatList<T>
@@ -28,10 +27,8 @@ export type ListViewProps<T> = PropsWithoutRef<FlashListProps<T>>
  */
 
 const ListViewComponent = forwardRef(
-  <T,>(props: ListViewProps<T>, ref: React.ForwardedRef<ListViewRef<T>>) => {
-    const ListComponentWrapper = isRTL ? FlatList : FlashList
-
-    return <ListComponentWrapper {...props} ref={ref} />
+  <T,>(props: ListViewProps<T>, ref: React.ForwardedRef<any>) => {
+    return <FlashList {...props} ref={ref} />
   },
 )
 

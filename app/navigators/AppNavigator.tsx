@@ -13,10 +13,10 @@ import {
 import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack"
 import React from "react"
 import { useColorScheme } from "react-native"
-import * as Screens from "app/screens"
+import * as Screens from "app/pages"
 import Config from "../config"
 import { useStore, isAuthenticatedSelector } from "../store"
-import { DemoNavigator, DemoTabParamList } from "./DemoNavigator"
+import { DemoNavigator, MainTabParamList } from "./MainNavigator"
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
 import { colors } from "app/theme"
 
@@ -36,7 +36,7 @@ import { colors } from "app/theme"
 export type AppStackParamList = {
   Welcome: undefined
   Login: undefined
-  Demo: NavigatorScreenParams<DemoTabParamList>
+  Main: NavigatorScreenParams<MainTabParamList>
   // 🔥 Your screens go here
   // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
 }
@@ -67,7 +67,7 @@ const AppStack = () => {
         <>
           <Stack.Screen name="Welcome" component={Screens.WelcomeScreen} />
 
-          <Stack.Screen name="Demo" component={DemoNavigator} />
+          <Stack.Screen name="Main" component={DemoNavigator} />
         </>
       ) : (
         <>
@@ -82,7 +82,7 @@ const AppStack = () => {
 }
 
 export interface NavigationProps
-  extends Partial<React.ComponentProps<typeof NavigationContainer>> {}
+  extends Partial<React.ComponentProps<typeof NavigationContainer>> { }
 
 export const AppNavigator = (props: NavigationProps) => {
   const colorScheme = useColorScheme()

@@ -3,29 +3,35 @@
 
 import { Platform } from "react-native"
 import {
-  SpaceGrotesk_300Light as spaceGroteskLight,
-  SpaceGrotesk_400Regular as spaceGroteskRegular,
-  SpaceGrotesk_500Medium as spaceGroteskMedium,
-  SpaceGrotesk_600SemiBold as spaceGroteskSemiBold,
-  SpaceGrotesk_700Bold as spaceGroteskBold,
-} from "@expo-google-fonts/space-grotesk"
+  Jost_300Light as JLight,
+  Jost_400Regular as JRegular,
+  Jost_500Medium as JMedium,
+  Jost_600SemiBold as JSemiBold,
+  Jost_700Bold as JBold,
+  Jost_800ExtraBold as JExtraBold,
+  Jost_900Black as JBlack,
+} from "@expo-google-fonts/jost";
 
 export const customFontsToLoad = {
-  spaceGroteskLight,
-  spaceGroteskRegular,
-  spaceGroteskMedium,
-  spaceGroteskSemiBold,
-  spaceGroteskBold,
-}
+  JLight,
+  JRegular,
+  JMedium,
+  JBold,
+  JSemiBold,
+  JExtraBold,
+  JBlack,
+};
 
 const fonts = {
-  spaceGrotesk: {
+  jost: {
     // Cross-platform Google font.
-    light: "spaceGroteskLight",
-    normal: "spaceGroteskRegular",
-    medium: "spaceGroteskMedium",
-    semiBold: "spaceGroteskSemiBold",
-    bold: "spaceGroteskBold",
+    light: "JLight",
+    normal: "JRegular",
+    medium: "JMedium",
+    semiBold: "JSemiBold",
+    bold: "JBold",
+    extraBold: "JExtraBold",
+    black: "JBlack",
   },
   helveticaNeue: {
     // iOS only font.
@@ -59,7 +65,7 @@ export const typography = {
   /**
    * The primary font. Used in most places.
    */
-  primary: fonts.spaceGrotesk,
+  primary: fonts.jost,
   /**
    * An alternate font used for perhaps titles and stuff.
    */

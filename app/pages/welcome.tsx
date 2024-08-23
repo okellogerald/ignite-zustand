@@ -1,7 +1,6 @@
 import React, { FC } from "react"
-import { Image, ImageStyle, TextStyle, View, ViewStyle } from "react-native"
-import { Button, Text } from "app/components"
-import { isRTL } from "../i18n"
+import { Image, ImageStyle, View, ViewStyle } from "react-native"
+import { Button } from "app/components"
 import { useStore } from "../store"
 import { AppStackScreenProps } from "../navigators"
 import { colors, spacing } from "../theme"
@@ -19,12 +18,12 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = (_props) => {
   const logout = useStore((state) => state.logout)
 
   function goNext() {
-    navigation.navigate("Demo", { screen: "DemoShowroom", params: {} })
+    navigation.navigate("Main", { screen: "Home" })
   }
 
   useHeader(
     {
-      rightTx: "common.logOut",
+      rightText: "Log out",
       onRightPress: logout,
     },
     [logout],
@@ -36,25 +35,15 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = (_props) => {
     <View style={$container}>
       <View style={$topContainer}>
         <Image style={$welcomeLogo} source={welcomeLogo} resizeMode="contain" />
-        <Text
-          testID="welcome-heading"
-          style={$welcomeHeading}
-          tx="welcomeScreen.readyForLaunch"
-          preset="heading"
-        />
-        <Text tx="welcomeScreen.exciting" preset="subheading" />
         <Image style={$welcomeFace} source={welcomeFace} resizeMode="contain" />
       </View>
 
       <View style={[$bottomContainer, $bottomContainerInsets]}>
-        <Text tx="welcomeScreen.postscript" size="md" />
 
         <Button
-          testID="next-screen-button"
           preset="reversed"
-          tx="welcomeScreen.letsGo"
           onPress={goNext}
-        />
+        >Let's go</Button>
       </View>
     </View>
   )
@@ -95,9 +84,4 @@ const $welcomeFace: ImageStyle = {
   position: "absolute",
   bottom: -47,
   right: -80,
-  transform: [{ scaleX: isRTL ? -1 : 1 }],
-}
-
-const $welcomeHeading: TextStyle = {
-  marginBottom: spacing.md,
 }

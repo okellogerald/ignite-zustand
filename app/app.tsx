@@ -16,14 +16,13 @@ if (__DEV__) {
   // to only execute this in development.
   require("./devtools/ReactotronConfig.ts")
 }
-import "./i18n"
 import "./utils/ignoreWarnings"
 import { useFonts } from "expo-font"
 import React, { useEffect } from "react"
 import { initialWindowMetrics, SafeAreaProvider } from "react-native-safe-area-context"
 import * as Linking from "expo-linking"
 import { AppNavigator, useNavigationPersistence } from "./navigators"
-import { ErrorBoundary } from "./screens/ErrorScreen/ErrorBoundary"
+import { ErrorBoundary } from "./pages/error/boundary"
 import * as storage from "./utils/storage"
 import { customFontsToLoad } from "./theme"
 import Config from "./config"
@@ -41,14 +40,11 @@ const config = {
       path: "",
     },
     Welcome: "welcome",
-    Demo: {
+    Main: {
       screens: {
-        DemoShowroom: {
-          path: "showroom/:queryIndex?/:itemIndex?",
-        },
-        DemoDebug: "debug",
-        DemoPodcastList: "podcast",
-        DemoCommunity: "community",
+        Home: "home",
+        Account: "account",
+        Explore: "explore",
       },
     },
   },

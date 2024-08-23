@@ -7,7 +7,7 @@ import { colors, spacing } from "../theme"
 import { useAuthenticationStore, useStore } from "app/store"
 import { validationErrorSelector } from "app/store/AuthenticationStore"
 
-interface LoginScreenProps extends AppStackScreenProps<"Login"> {}
+interface LoginScreenProps extends AppStackScreenProps<"Login"> { }
 
 export const LoginScreen: FC<LoginScreenProps> = (_props) => {
   const authPasswordInput = useRef<TextInput>(null)
@@ -73,9 +73,9 @@ export const LoginScreen: FC<LoginScreenProps> = (_props) => {
       contentContainerStyle={$screenContentContainer}
       safeAreaEdges={["top", "bottom"]}
     >
-      <Text testID="login-heading" tx="loginScreen.signIn" preset="heading" style={$signIn} />
-      <Text tx="loginScreen.enterDetails" preset="subheading" style={$enterDetails} />
-      {attemptsCount > 2 && <Text tx="loginScreen.hint" size="sm" weight="light" style={$hint} />}
+      <Text testID="login-heading" preset="heading" style={$signIn}>Sign In</Text>
+      <Text preset="subheading" style={$enterDetails}>Enter details</Text>
+      {attemptsCount > 2 && <Text size="sm" weight="light" style={$hint}>Login with email and password</Text>}
 
       <TextField
         value={authEmail}
@@ -84,9 +84,7 @@ export const LoginScreen: FC<LoginScreenProps> = (_props) => {
         autoCapitalize="none"
         autoComplete="email"
         autoCorrect={false}
-        keyboardType="email-address"
-        labelTx="loginScreen.emailFieldLabel"
-        placeholderTx="loginScreen.emailFieldPlaceholder"
+        placeholder="Email"
         helper={error}
         status={error ? "error" : undefined}
         onSubmitEditing={() => authPasswordInput.current?.focus()}
@@ -101,19 +99,16 @@ export const LoginScreen: FC<LoginScreenProps> = (_props) => {
         autoComplete="password"
         autoCorrect={false}
         secureTextEntry={isAuthPasswordHidden}
-        labelTx="loginScreen.passwordFieldLabel"
-        placeholderTx="loginScreen.passwordFieldPlaceholder"
+        placeholder="Password"
         onSubmitEditing={login}
         RightAccessory={PasswordRightAccessory}
       />
 
       <Button
-        testID="login-button"
-        tx="loginScreen.tapToSignIn"
         style={$tapButton}
         preset="reversed"
         onPress={login}
-      />
+      >Log in</Button>
     </Screen>
   )
 }
