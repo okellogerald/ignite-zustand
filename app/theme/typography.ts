@@ -1,26 +1,4 @@
-// TODO: write documentation about fonts and typography along with guides on how to add custom fonts in own
-// markdown file and add links from here
-
 import { Platform } from "react-native"
-import {
-  Jost_300Light as JLight,
-  Jost_400Regular as JRegular,
-  Jost_500Medium as JMedium,
-  Jost_600SemiBold as JSemiBold,
-  Jost_700Bold as JBold,
-  Jost_800ExtraBold as JExtraBold,
-  Jost_900Black as JBlack,
-} from "@expo-google-fonts/jost";
-
-export const customFontsToLoad = {
-  JLight,
-  JRegular,
-  JMedium,
-  JBold,
-  JSemiBold,
-  JExtraBold,
-  JBlack,
-};
 
 const fonts = {
   jost: {

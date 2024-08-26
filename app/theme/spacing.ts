@@ -11,6 +11,8 @@ export const spacing = {
   xl: 32,
   xxl: 48,
   xxxl: 64,
+
+  PAGE_HORIZONTAL_PADDING: 20,
 } as const
 
 export type Spacing = keyof typeof spacing

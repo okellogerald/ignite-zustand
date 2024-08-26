@@ -3,16 +3,19 @@ import { CompositeScreenProps } from "@react-navigation/native"
 import React from "react"
 import { TextStyle, ViewStyle } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-import { HomePage } from "../pages/home"
+import { HomePage } from "../pages/home/home"
 import { colors, spacing, typography } from "../theme"
 import { AppStackParamList, AppStackScreenProps } from "./AppNavigator"
-import { AccountPage, ExplorePage } from "app/pages"
-import { Home, Telescope, User } from "lucide-react-native"
+import { AIPage, LifestylePage, NutritionPage } from "app/pages"
+import { Brain, Clapperboard, Home, User, UtensilsCrossed } from "lucide-react-native"
+import { FitnessPage } from "app/pages/fitness/page"
 
 export type MainTabParamList = {
   Home: undefined
-  Explore: undefined
-  Account: undefined
+  Fitness: undefined
+  Nutrition: undefined
+  Lifestyle: undefined
+  AI: undefined
 }
 
 export type MainTabScreenProps<T extends keyof MainTabParamList> = CompositeScreenProps<
@@ -37,6 +40,27 @@ export function DemoNavigator() {
         tabBarItemStyle: $tabBarItem,
       }}
     >
+
+      <Tab.Screen
+        name="Fitness"
+        component={FitnessPage}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Clapperboard color={focused ? colors.tint : undefined} size={30} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Nutrition"
+        component={NutritionPage}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <UtensilsCrossed color={focused ? colors.tint : undefined} size={30} />
+          ),
+        }}
+      />
+
       <Tab.Screen
         name="Home"
         component={HomePage}
@@ -48,24 +72,25 @@ export function DemoNavigator() {
       />
 
       <Tab.Screen
-        name="Explore"
-        component={ExplorePage}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <Telescope color={focused ? colors.tint : undefined} size={30} />
-          ),
-        }}
-      />
-
-      <Tab.Screen
-        name="Account"
-        component={AccountPage}
+        name="Lifestyle"
+        component={LifestylePage}
         options={{
           tabBarIcon: ({ focused }) => (
             <User color={focused ? colors.tint : undefined} size={30} />
           ),
         }}
       />
+
+      <Tab.Screen
+        name="AI"
+        component={AIPage}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Brain color={focused ? colors.tint : undefined} size={30} />
+          ),
+        }}
+      />
+
     </Tab.Navigator>
   )
 }
@@ -81,6 +106,6 @@ const $tabBarItem: ViewStyle = {
 
 const $tabBarLabel: TextStyle = {
   fontSize: 12,
-  fontFamily: typography.primary.medium,
+  fontFamily: typography.primary.normal,
   lineHeight: 16,
 }

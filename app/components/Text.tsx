@@ -1,4 +1,3 @@
-import i18n from "i18n-js"
 import React from "react"
 import { StyleProp, Text as RNText, TextProps as RNTextProps, TextStyle } from "react-native"
 import { colors, typography } from "../theme"
@@ -12,11 +11,6 @@ export interface TextProps extends RNTextProps {
    * The text to display if not using `tx` or nested components.
    */
   text?: string
-  /**
-   * Optional options to pass to i18n. Useful for interpolation
-   * as well as explicitly setting locale or translation fallbacks.
-   */
-  txOptions?: i18n.TranslateOptions
   /**
    * An optional style override useful for padding & margin.
    */
@@ -53,7 +47,6 @@ export function Text(props: TextProps) {
   const preset: Presets = props.preset ?? "default"
   const $styles: StyleProp<TextStyle> = [
     $presets[preset],
-    weight && $fontWeightStyles[weight],
     size && $sizeStyles[size],
     $styleOverride,
   ]
@@ -81,7 +74,6 @@ const $fontWeightStyles = Object.entries(typography.primary).reduce((acc, [weigh
 
 const $baseStyle: StyleProp<TextStyle> = [
   $sizeStyles.sm,
-  $fontWeightStyles.normal,
   { color: colors.text },
 ]
 

@@ -56,6 +56,14 @@
     "plugins": [
       "expo-localization",
       [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Jost"
+          ]
+        }
+      ],
+      [
         "expo-build-properties",
         {
           "ios": {

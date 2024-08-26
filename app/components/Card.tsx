@@ -9,7 +9,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { colors, spacing } from "../theme"
-import { Text, TextProps } from "./Text"
+import { Text, TextProps } from "./text"
 
 type Presets = keyof typeof $containerPresets
 

@@ -1,31 +1,8 @@
-/* eslint-disable import/first */
-/**
- * Welcome to the main entry point of the app. In this file, we'll
- * be kicking off our app.
- *
- * Most of this file is boilerplate and you shouldn't need to modify
- * it very often. But take some time to look through and understand
- * what is going on here.
- *
- * The app navigation resides in ./app/navigators, so head over there
- * if you're interested in adding screens and navigators.
- */
-if (__DEV__) {
-  // Load Reactotron configuration in development. We don't want to
-  // include this in our production bundle, so we are using `if (__DEV__)`
-  // to only execute this in development.
-  require("./devtools/ReactotronConfig.ts")
-}
 import "./utils/ignoreWarnings"
-import { useFonts } from "expo-font"
 import React, { useEffect } from "react"
 import { initialWindowMetrics, SafeAreaProvider } from "react-native-safe-area-context"
 import * as Linking from "expo-linking"
-import { AppNavigator, useNavigationPersistence } from "./navigators"
-import { ErrorBoundary } from "./pages/error/boundary"
-import * as storage from "./utils/storage"
-import { customFontsToLoad } from "./theme"
-import Config from "./config"
+import { AppNavigator } from "./navigators"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
 import { ViewStyle } from "react-native"
 import { useStore } from "./store"
@@ -42,9 +19,11 @@ const config = {
     Welcome: "welcome",
     Main: {
       screens: {
+        AI: "ai",
         Home: "home",
-        Account: "account",
-        Explore: "explore",
+        Fitness: "fitness",
+        Nutrition: "nutrition",
+        Lifestyle: "lifestyle",
       },
     },
   },
@@ -59,13 +38,6 @@ interface AppProps {
  */
 function App(props: AppProps) {
   const { hideSplashScreen } = props
-  const {
-    initialNavigationState,
-    onNavigationStateChange,
-    isRestored: isNavigationStateRestored,
-  } = useNavigationPersistence(storage, NAVIGATION_PERSISTENCE_KEY)
-
-  const [areFontsLoaded] = useFonts(customFontsToLoad)
 
   const hasHydrated = useStore((state) => state._hasHydrated)
 
@@ -81,7 +53,7 @@ function App(props: AppProps) {
   // In iOS: application:didFinishLaunchingWithOptions:
   // In Android: https://stackoverflow.com/a/45838109/204044
   // You can replace with your own loading component if you wish.
-  if (!hasHydrated || !isNavigationStateRestored || !areFontsLoaded) return null
+  if (!hasHydrated) return null
 
   const linking = {
     prefixes: [prefix],
@@ -91,15 +63,11 @@ function App(props: AppProps) {
   // otherwise, we're ready to render the app
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <ErrorBoundary catchErrors={Config.catchErrors}>
-        <GestureHandlerRootView style={$container}>
-          <AppNavigator
-            linking={linking}
-            initialState={initialNavigationState}
-            onStateChange={onNavigationStateChange}
-          />
-        </GestureHandlerRootView>
-      </ErrorBoundary>
+      <GestureHandlerRootView style={$container}>
+        <AppNavigator
+          linking={linking}
+        />
+      </GestureHandlerRootView>
     </SafeAreaProvider>
   )
 }

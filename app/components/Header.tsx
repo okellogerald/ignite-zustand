@@ -10,7 +10,7 @@ import {
 import { colors, spacing } from "../theme"
 import { ExtendedEdge, useSafeAreaInsetsStyle } from "../utils/useSafeAreaInsetsStyle"
 import { Icon, IconTypes } from "./Icon"
-import { Text, TextProps } from "./Text"
+import { Text, TextProps } from "./text"
 
 export interface HeaderProps {
   /**

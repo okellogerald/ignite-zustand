@@ -75,7 +75,7 @@ export const LoginScreen: FC<LoginScreenProps> = (_props) => {
     >
       <Text testID="login-heading" preset="heading" style={$signIn}>Sign In</Text>
       <Text preset="subheading" style={$enterDetails}>Enter details</Text>
-      {attemptsCount > 2 && <Text size="sm" weight="light" style={$hint}>Login with email and password</Text>}
+     {/*  {attemptsCount > 2 && <Text size="sm" style={$hint}>Login with email and password</Text>} */}
 
       <TextField
         value={authEmail}

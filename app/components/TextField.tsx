@@ -9,7 +9,7 @@ import {
   ViewStyle,
 } from "react-native"
 import { colors, spacing, typography } from "../theme"
-import { Text, TextProps } from "./Text"
+import { Text, TextProps } from "./text"
 
 export interface TextFieldAccessoryProps {
   style: StyleProp<any>
